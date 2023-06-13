@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: demo
+      MYSQL_USER: gorka
+      MYSQL_PASSWORD: root123
